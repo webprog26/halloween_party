@@ -12,17 +12,18 @@ int getHorizontalCuts(int attempts)
     return attempts / 2 + (attempts % (attempts / 2));
 }
 
-int calculateResult(int attempts)
+unsigned long long calculateResult(int attempts)
 {
     int horizontalCuts = getHorizontalCuts(attempts);
+
     int verticalCuts = attempts - horizontalCuts;
 
-    return horizontalCuts * verticalCuts;
+    return (unsigned long long) horizontalCuts * (unsigned long long) verticalCuts;
 }
 
 int main()
 {
-    /*
+
     int t;
     int k;
 
@@ -31,8 +32,7 @@ int main()
     for(int i = 0; i < t; i++)
     {
         scanf("%d", &k);
-        printf("%i\n", calculateResult(k));
+        printf("%llu\n",  calculateResult(k));
     }
-    */
     return 0;
 }

@@ -1,10 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package halloween_party;
-
 import java.util.Scanner;
 
 /**
@@ -19,33 +12,38 @@ public class Solution {
     public static void main(String[] args) {
         
         Scanner scanner = new Scanner(System.in);
-        String s = scanner.nextLine();
+        printResults(getUserInput(scanner), scanner);
         
         
-        int t = Integer.parseInt(s);
-        
+    }
+    
+    public static int getHorizontalCuts(int attempts){
+        if(attempts % 2 == 0)
+        {
+        return attempts / 2;
+        }
+
+        return attempts / 2 + (attempts % (attempts / 2));
+    }
+    
+    public static long calculateResult(int attempts){
+        int horizontalCuts = getHorizontalCuts(attempts);
+
+        int verticalCuts = attempts - horizontalCuts;
+
+    return (long) horizontalCuts * (long) verticalCuts;
+    }
+    
+    public static int getUserInput(Scanner scanner)
+    {
+      return Integer.parseInt(scanner.nextLine());
+    }
+    
+    public static void printResults(int t, Scanner scanner)
+    {
         for(int i = 0; i < t; i++)
         {
             System.out.printf("%d\n", calculateResult(Integer.parseInt(scanner.nextLine())));
         }
-    }
-    
-    public static int getHorizontalCuts(int attempts)
-    {
-        if(attempts % 2 == 0)
-    {
-        return attempts / 2;
-    }
-
-    return attempts / 2 + (attempts % (attempts / 2));
-    }
-    
-    public static long calculateResult(int attempts)
-    {
-        int horizontalCuts = getHorizontalCuts(attempts);
-
-    int verticalCuts = attempts - horizontalCuts;
-
-    return (long) horizontalCuts * (long) verticalCuts;
     }
 }
